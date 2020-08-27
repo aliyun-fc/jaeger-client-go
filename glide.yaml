@@ -23,6 +23,7 @@ import:
   version: 0.0.6
 testImport:
 - package: github.com/stretchr/testify
+  version: f654a9112bbeac49ca2cd45bfbe11533c4666cf8
   subpackages:
   - assert
   - require
