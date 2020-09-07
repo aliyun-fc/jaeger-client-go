@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"sync"
 
+	"github.com/uber/jaeger-client-go/sync"
 	"go.uber.org/atomic"
 )
 
