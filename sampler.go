@@ -425,7 +425,7 @@ func applySamplerOptions(opts ...SamplerOption) samplerOptions {
 		option(&options)
 	}
 	if options.sampler == nil {
-		options.sampler = newProbabilisticSampler(0.001)
+		options.sampler = NewRateLimitingSampler(1)
 	}
 	if options.logger == nil {
 		options.logger = log.NullLogger
