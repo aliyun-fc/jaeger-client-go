@@ -143,9 +143,13 @@ func NewTracer(
 	}
 	// Set tracer-level tags
 	t.tags = append(t.tags, Tag{key: JaegerClientVersionTagKey, value: JaegerClientVersion})
-	if hostname, err := os.Hostname(); err == nil {
-		t.tags = append(t.tags, Tag{key: TracerHostnameTagKey, value: hostname})
+
+	if _, ok := t.getTag(TracerHostnameTagKey); !ok {
+		if hostname, err := os.Hostname(); err == nil {
+			t.tags = append(t.tags, Tag{key: TracerHostnameTagKey, value: hostname})
+		}
 	}
+
 	if ipval, ok := t.getTag(TracerIPTagKey); ok {
 		ipv4, err := utils.ParseIPToUint32(ipval.(string))
 		if err != nil {
