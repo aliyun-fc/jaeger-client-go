@@ -351,7 +351,6 @@ func (t *Tracer) Extract(
 
 // Close releases all resources used by the Tracer and flushes any remaining buffered spans.
 func (t *Tracer) Close() error {
-	t.reporter.Close()
 	t.sampler.Close()
 	if mgr, ok := t.baggageRestrictionManager.(io.Closer); ok {
 		mgr.Close()
